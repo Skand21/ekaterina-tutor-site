@@ -483,22 +483,37 @@ h3 {
 
 .lesson-layout {
   display: grid;
-  grid-template-columns: 1.12fr 1fr 1fr;
-  gap: 14px;
+  grid-template-columns: minmax(280px, 0.88fr) minmax(0, 1.12fr);
+  gap: 18px;
   margin-top: 38px;
 }
 
 .lesson-card {
-  min-height: 230px;
-  padding: 28px;
+  min-height: 210px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
 }
 
 .lesson-card.accent {
-  grid-row: span 2;
-  min-height: 476px;
+  display: flex;
+  min-height: 438px;
   background:
-    linear-gradient(140deg, rgba(110, 79, 216, 0.1), rgba(15, 139, 127, 0.1)),
+    linear-gradient(145deg, rgba(110, 79, 216, 0.14), rgba(15, 139, 127, 0.11)),
     var(--white);
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.lesson-card.accent::after {
+  content: "";
+  position: absolute;
+  right: -58px;
+  bottom: -58px;
+  width: 190px;
+  height: 190px;
+  border: 28px solid rgba(110, 79, 216, 0.1);
+  border-radius: 50%;
 }
 
 .lesson-card.accent h3 {
@@ -506,15 +521,77 @@ h3 {
   font-size: clamp(32px, 4vw, 52px);
 }
 
-.format-grid {
+.lesson-card span,
+.format-item span {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 18px;
+  color: var(--plum-dark);
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lesson-card small {
+  position: relative;
+  z-index: 1;
+  color: #768398;
+  font-size: 13px;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.lesson-path {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
 
+.lesson-path .lesson-card:nth-child(1),
+.lesson-path .lesson-card:nth-child(4) {
+  background:
+    linear-gradient(145deg, rgba(223, 247, 238, 0.58), rgba(255, 255, 255, 0.96)),
+    var(--white);
+}
+
+.format-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+}
+
 .format-item {
-  min-height: 190px;
-  padding: 26px;
+  min-height: 210px;
+  padding: 28px;
+  border: 0;
+  border-radius: 0;
+  background: var(--white);
+}
+
+.format-item:nth-child(odd) {
+  border-right: 1px solid var(--line);
+}
+
+.format-item:nth-child(n + 3) {
+  border-top: 1px solid var(--line);
+}
+
+.format-item:nth-child(1) {
+  background:
+    linear-gradient(145deg, rgba(110, 79, 216, 0.12), rgba(255, 255, 255, 0.95)),
+    var(--white);
+}
+
+.format-item:nth-child(4) {
+  background:
+    linear-gradient(145deg, rgba(223, 247, 238, 0.62), rgba(255, 255, 255, 0.96)),
+    var(--white);
 }
 
 .proof-grid {
@@ -598,10 +675,7 @@ h3 {
 }
 
 .review-screens {
-  display: grid;
-  grid-template-columns: minmax(260px, 0.58fr) minmax(0, 1.42fr);
-  gap: 28px;
-  align-items: start;
+  display: block;
   margin-top: 34px;
   padding: 28px;
   border: 1px solid var(--line);
@@ -612,7 +686,7 @@ h3 {
 }
 
 .review-screens-copy h3 {
-  max-width: 620px;
+  max-width: 860px;
   margin-bottom: 14px;
   font-size: clamp(30px, 3.6vw, 52px);
   line-height: 1.02;
@@ -620,39 +694,40 @@ h3 {
 }
 
 .review-screens-copy p:not(.eyebrow) {
-  max-width: 620px;
+  max-width: 760px;
   color: #526177;
   font-size: 18px;
 }
 
 .review-shot-grid {
+  margin-top: 26px;
   column-count: 2;
-  column-gap: 14px;
+  column-gap: 18px;
 }
 
 .review-shot {
   display: inline-block;
   width: 100%;
-  margin: 0 0 14px;
-  padding: 10px;
+  margin: 0 0 18px;
+  padding: 12px;
   break-inside: avoid;
   border: 1px solid rgba(27, 36, 48, 0.1);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.72);
+  cursor: zoom-in;
 }
 
 .review-shot img {
   display: block;
   width: 100%;
-  max-height: 580px;
   border: 1px solid rgba(27, 36, 48, 0.14);
   border-radius: 8px;
-  object-fit: contain;
   background: #161b2a;
   box-shadow: 0 12px 30px rgba(27, 36, 48, 0.12);
 }
 
-.review-shot figcaption {
+.review-shot span {
+  display: block;
   margin-top: 12px;
   color: #768398;
   font-size: 13px;
@@ -818,7 +893,11 @@ h3 {
   }
 
   .lesson-layout {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+  }
+
+  .lesson-card.accent {
+    min-height: 300px;
   }
 
   .proof-grid {
@@ -829,10 +908,8 @@ h3 {
     grid-template-columns: 1fr;
   }
 
-  .lesson-card.accent {
-    grid-row: auto;
-    grid-column: 1 / -1;
-    min-height: 260px;
+  .review-shot-grid {
+    column-count: 2;
   }
 }
 
@@ -959,6 +1036,19 @@ h3 {
   .lesson-layout,
   .format-grid {
     grid-template-columns: 1fr;
+  }
+
+  .lesson-path {
+    grid-template-columns: 1fr;
+  }
+
+  .format-item,
+  .format-item:nth-child(odd) {
+    border-right: 0;
+  }
+
+  .format-item:nth-child(n + 2) {
+    border-top: 1px solid var(--line);
   }
 
   .needs-grid article,
