@@ -156,8 +156,8 @@ a {
 .hero {
   position: relative;
   display: grid;
-  min-height: 84vh;
-  padding: 148px 24px 90px;
+  min-height: 850px;
+  padding: 148px 24px 138px;
   overflow: hidden;
   background:
     linear-gradient(
@@ -174,13 +174,13 @@ a {
 .hero::before {
   content: "";
   position: absolute;
-  inset: 94px 0 0 47%;
+  inset: 96px 44px 110px 54%;
   background:
     linear-gradient(0deg, rgba(255, 250, 247, 0.28), rgba(255, 250, 247, 0.04)),
-    url("assets/ekaterina-portrait.jpg") center / cover no-repeat;
-  opacity: 0.82;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 100%);
-  mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 100%);
+    url("assets/ekaterina-portrait.jpg") center bottom / contain no-repeat;
+  opacity: 0.9;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 16%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 16%, #000 100%);
 }
 
 .hero::after {
@@ -198,7 +198,7 @@ a {
 .hero-inner {
   position: relative;
   z-index: 1;
-  width: min(760px, 100%);
+  width: min(680px, 100%);
   margin: auto auto auto max(24px, calc((100vw - 1180px) / 2));
 }
 
@@ -231,9 +231,9 @@ p {
 }
 
 h1 {
-  max-width: 720px;
+  max-width: 650px;
   margin-bottom: 22px;
-  font-size: clamp(46px, 6.2vw, 82px);
+  font-size: clamp(44px, 5.8vw, 78px);
   line-height: 0.95;
   font-weight: 950;
   letter-spacing: 0;
@@ -309,7 +309,7 @@ h3 {
 .hero-note {
   display: grid;
   gap: 6px;
-  width: min(520px, 100%);
+  width: min(620px, 100%);
   margin-top: 46px;
   padding: 14px 16px;
   border-left: 4px solid var(--amber);
@@ -317,8 +317,16 @@ h3 {
   background: rgba(255, 250, 247, 0.86);
   box-shadow: 0 16px 40px rgba(44, 32, 26, 0.08);
   color: #314155;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 800;
+}
+
+.hero-note span:first-child {
+  color: var(--teal);
+  font-size: 13px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .mobile-portrait {
@@ -749,8 +757,8 @@ h3 {
   }
 
   .hero::before {
-    inset: 92px 0 0 44%;
-    opacity: 0.7;
+    inset: 96px 24px 116px 52%;
+    opacity: 0.82;
   }
 
   .facts {
