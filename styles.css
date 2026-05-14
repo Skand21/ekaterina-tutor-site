@@ -156,7 +156,7 @@ a {
 .hero {
   position: relative;
   display: grid;
-  min-height: 88vh;
+  min-height: 84vh;
   padding: 148px 24px 90px;
   overflow: hidden;
   background:
@@ -233,7 +233,7 @@ p {
 h1 {
   max-width: 720px;
   margin-bottom: 22px;
-  font-size: clamp(48px, 7vw, 92px);
+  font-size: clamp(46px, 6.2vw, 82px);
   line-height: 0.95;
   font-weight: 950;
   letter-spacing: 0;
@@ -241,7 +241,7 @@ h1 {
 
 h2 {
   margin-bottom: 18px;
-  font-size: clamp(34px, 4.2vw, 64px);
+  font-size: clamp(34px, 3.8vw, 58px);
   line-height: 1.02;
   font-weight: 950;
   letter-spacing: 0;
@@ -311,11 +311,18 @@ h3 {
   gap: 6px;
   width: min(520px, 100%);
   margin-top: 46px;
-  padding-left: 18px;
+  padding: 14px 16px;
   border-left: 4px solid var(--amber);
+  border-radius: 8px;
+  background: rgba(255, 250, 247, 0.86);
+  box-shadow: 0 16px 40px rgba(44, 32, 26, 0.08);
   color: #314155;
   font-size: 17px;
   font-weight: 800;
+}
+
+.mobile-portrait {
+  display: none;
 }
 
 .facts {
@@ -433,7 +440,6 @@ h3 {
 .needs-grid article,
 .lesson-card,
 .format-item,
-.quote-card,
 .contact-card,
 .answers-list details {
   border: 1px solid var(--line);
@@ -458,7 +464,6 @@ h3 {
 .needs-grid p,
 .lesson-card p,
 .format-item p,
-.quote-card p,
 .answers-list p,
 .contact-card p {
   color: #526177;
@@ -501,68 +506,109 @@ h3 {
   padding: 26px;
 }
 
-.proof-strip {
+.proof-grid {
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(300px, 380px);
-  gap: 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
   margin-top: 38px;
-  padding-bottom: 18px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-color: var(--plum) rgba(110, 79, 216, 0.14);
 }
 
-.proof-strip > * {
-  scroll-snap-align: start;
+.proof-card,
+.proof-media {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
 }
 
-.quote-card {
+.proof-card {
   display: flex;
-  min-height: 420px;
+  min-height: 284px;
   flex-direction: column;
   justify-content: space-between;
-  padding: 30px;
+  padding: 24px;
+}
+
+.proof-card.result,
+.proof-card.review {
+  grid-column: span 2;
+  min-height: 320px;
   background:
-    linear-gradient(160deg, rgba(255, 250, 247, 0.96), rgba(255, 255, 255, 0.9)),
+    linear-gradient(145deg, rgba(223, 247, 238, 0.72), rgba(255, 255, 255, 0.94)),
     var(--white);
 }
 
-.quote-card.green {
-  background: linear-gradient(160deg, #e8f8f4, #ffffff);
+.proof-card.parent {
+  background:
+    linear-gradient(145deg, rgba(110, 79, 216, 0.1), rgba(255, 255, 255, 0.92)),
+    var(--white);
 }
 
-.quote-card p {
+.proof-label {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 20px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  background: rgba(110, 79, 216, 0.11);
+  color: var(--plum-dark);
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.proof-card strong {
+  display: block;
+  margin-bottom: 16px;
   color: var(--ink);
-  font-size: 23px;
-  font-weight: 850;
-  line-height: 1.32;
+  font-size: clamp(24px, 2.4vw, 36px);
+  line-height: 1.08;
+  font-weight: 950;
 }
 
-.quote-card span {
-  color: var(--muted);
-  font-size: 14px;
+.proof-card p {
+  margin-bottom: 28px;
+  color: #526177;
+  font-size: 17px;
+}
+
+.proof-card small {
+  color: #768398;
+  font-size: 13px;
   font-weight: 850;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
-.image-card {
-  min-height: 420px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
+.proof-media {
+  position: relative;
+  min-height: 320px;
   overflow: hidden;
   background: var(--soft);
 }
 
-.image-card img {
+.proof-media img {
   width: 100%;
   height: 100%;
+  min-height: 320px;
   object-fit: cover;
 }
 
-.lesson-shot img {
+.proof-media.review-shot img {
   object-position: top;
+}
+
+.proof-media span {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  left: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(27, 36, 48, 0.82);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 850;
 }
 
 .answers-list {
@@ -725,6 +771,10 @@ h3 {
     grid-template-columns: 1fr 1fr;
   }
 
+  .proof-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .lesson-card.accent {
     grid-row: auto;
     grid-column: 1 / -1;
@@ -752,7 +802,7 @@ h3 {
   }
 
   .hero {
-    min-height: 86vh;
+    min-height: auto;
     padding: 118px 20px 56px;
     background:
       linear-gradient(
@@ -765,10 +815,7 @@ h3 {
   }
 
   .hero::before {
-    inset: 48% 0 0 24%;
-    opacity: 0.56;
-    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 28%, #000 100%);
-    mask-image: linear-gradient(180deg, transparent 0%, #000 28%, #000 100%);
+    display: none;
   }
 
   .hero::after {
@@ -805,9 +852,25 @@ h3 {
   }
 
   .hero-note {
-    max-width: 62%;
+    max-width: 100%;
     margin-top: 28px;
     font-size: 15px;
+  }
+
+  .mobile-portrait {
+    display: block;
+    width: min(260px, 78vw);
+    margin: 26px auto 0;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+  }
+
+  .mobile-portrait img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
   }
 
   .facts,
@@ -871,22 +934,28 @@ h3 {
     font-size: 17px;
   }
 
-  .proof-strip {
-    grid-auto-columns: minmax(278px, 86vw);
-    margin-left: -2px;
+  .proof-grid {
+    grid-template-columns: 1fr;
   }
 
-  .quote-card,
-  .image-card {
-    min-height: 380px;
+  .proof-card,
+  .proof-card.result,
+  .proof-card.review,
+  .proof-media {
+    grid-column: auto;
+    min-height: auto;
   }
 
-  .quote-card {
-    padding: 24px;
+  .proof-card {
+    padding: 22px;
   }
 
-  .quote-card p {
-    font-size: 20px;
+  .proof-card strong {
+    font-size: 24px;
+  }
+
+  .proof-media img {
+    min-height: 360px;
   }
 
   .contact-band {
@@ -900,7 +969,7 @@ h3 {
 
 @media (max-width: 430px) {
   .hero {
-    min-height: 820px;
+    min-height: auto;
     background:
       linear-gradient(
         180deg,
@@ -912,11 +981,10 @@ h3 {
   }
 
   .hero::before {
-    inset: 53% 0 0 18%;
-    opacity: 0.54;
+    display: none;
   }
 
   .hero-note {
-    max-width: 68%;
+    max-width: 100%;
   }
 }
