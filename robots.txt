@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: http://72.56.27.99/ekaterina/sitemap.xml
