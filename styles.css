@@ -578,6 +578,7 @@ h3 {
   font-size: clamp(24px, 2.4vw, 36px);
   line-height: 1.08;
   font-weight: 950;
+  overflow-wrap: anywhere;
 }
 
 .proof-card p {
