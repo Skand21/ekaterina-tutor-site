@@ -21,6 +21,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 104px;
 }
 
 body {
@@ -373,6 +374,7 @@ h3 {
 .section {
   width: min(1180px, calc(100% - 48px));
   margin: 118px auto 0;
+  scroll-margin-top: 104px;
 }
 
 .intro,
@@ -597,9 +599,9 @@ h3 {
 
 .review-screens {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(280px, 420px);
-  gap: 36px;
-  align-items: center;
+  grid-template-columns: minmax(260px, 0.58fr) minmax(0, 1.42fr);
+  gap: 28px;
+  align-items: start;
   margin-top: 34px;
   padding: 28px;
   border: 1px solid var(--line);
@@ -623,18 +625,31 @@ h3 {
   font-size: 18px;
 }
 
+.review-shot-grid {
+  column-count: 2;
+  column-gap: 14px;
+}
+
 .review-shot {
-  margin: 0;
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 14px;
+  padding: 10px;
+  break-inside: avoid;
+  border: 1px solid rgba(27, 36, 48, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .review-shot img {
+  display: block;
   width: 100%;
-  max-height: 560px;
+  max-height: 580px;
   border: 1px solid rgba(27, 36, 48, 0.14);
   border-radius: 8px;
   object-fit: contain;
   background: #161b2a;
-  box-shadow: 0 20px 55px rgba(27, 36, 48, 0.18);
+  box-shadow: 0 12px 30px rgba(27, 36, 48, 0.12);
 }
 
 .review-shot figcaption {
@@ -808,6 +823,10 @@ h3 {
 
   .proof-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .review-screens {
+    grid-template-columns: 1fr;
   }
 
   .lesson-card.accent {
@@ -998,8 +1017,12 @@ h3 {
     font-size: clamp(28px, 8vw, 38px);
   }
 
+  .review-shot-grid {
+    column-count: 1;
+  }
+
   .review-shot img {
-    max-height: 520px;
+    max-height: none;
   }
 
   .contact-band {
